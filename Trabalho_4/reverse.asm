@@ -6,7 +6,7 @@
 	xor $s5, $s5, $s5 # número
 	xor $s6, $s6, $s6 # rotação 
 	
-	add $s5, $zero, -1
+	add $s5, $zero, 0x00000061
 	
 	
 	for:

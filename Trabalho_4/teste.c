@@ -32,19 +32,9 @@ unsigned int crc32a(unsigned char *message) {
 
 int main(int argc, char const *argv[]) {
 	char in[16];
-	unsigned a = 1;
-	printf("unsigned int = %x ; reverse = %x\n", a, reverse(a));
-	//scanf("%[^\n]", in);
-	//printf("%x\n", crc32a(in));
+	unsigned a = '2';
+	//printf("unsigned int = %x ; reverse = %x\n", a, reverse(a));
+	scanf("%[^\n]", in);
+	printf("%x\n", crc32a(in));
 	return 0;
 }
-
-
-/*
-Questao 2: Perceba que o programa mantém registros excluídos no vetor e mantém um status no registro de cada 
-aluno.  Porque  esse  campo  foi  necessário?  Responda  procurando  avaliar  vantagens  e  desvantagens  dessa estratégia. 
-Você teria uma solução mais interessante em relação ao que foi proposto?
-Para que se saiba se o elemento foi excluido ou não do vetor na hora de printar. As vantagens são na hora de escrever o 
-algoritmo de exclusão do elemento q se faz mais facil, a desvantagem é na memória pois todos os elementos inseridos continuam
-na memória do pc independente se foi excluido ou não. Sim, excluiria o elemento do vetor.
-*/

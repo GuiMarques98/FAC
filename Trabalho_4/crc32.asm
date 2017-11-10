@@ -2,12 +2,10 @@
 buffer: .space 17	# Aloca 16 bytes de espaço para o buffer sem contar o terminador
 msg1:	.asciiz "Digite a mensagem para ser convertida para crc32 (maximo 16 caracteres): "
 quebra: .ascii 	"\n"
+msg2:	.asciiz "\n\nO numero em hexadecimal gerado pelo crc32 e: "
 .text
 main:
 	jal le_string	# Leitura de string
-	la $a0, buffer
-	addi $v0, $0, 4
-	syscall
 	jal calc_crc32
 calc_main:
 	move $a0, $v0	# Carrega a resposta do calculo do crc pra printar
@@ -44,7 +42,7 @@ reverse:
 		add $s1, $s1, 1
 	bne $s1, 32, for_reverse
 	
-	move $v0, $s6	# Move a resposta para o registrador de retorno 
+	move $v0, $s7	# Move a resposta para o registrador de retorno 
 	jr $ra	# Retorna
 end_reverse:
 
@@ -95,6 +93,11 @@ end_calc_crc_32:
 
 
 imprime_saida:
+	move $t0, $a0
+	la $a0, msg2	# Carrega a mensagem para saida
+	addi $v0, $0, 4	# Carrega numero referente ao print de uma string
+	syscall
+	move $a0, $t0
 	addi $v0, $0, 34	# Carrega numero referente ao print em hexadecimal
 	syscall
 end_imprime_saida:
